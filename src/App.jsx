@@ -7,21 +7,23 @@ function App() {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("tasks")) || [
       {
-        id: 1,
-        title: "Study Code",
-        description: "Study code to turn into a Dev Full-Stack",
+        id: "task-1", // ← MUDEI PARA STRING
+        title: "Study React",
+        description: "I did this App with React, and im still working on it!",
         isCompleted: false,
       },
       {
-        id: 2,
-        title: "Read a book",
-        description: "Read code books to turn into a Dev Full-Stack",
+        id: "task-2", // ← MUDEI PARA STRING
+        title: "Use TypeScript",
+        description:
+          "Im using TypeScript in my App! This can make secure about bugs.",
         isCompleted: false,
       },
       {
-        id: 3,
-        title: "Train at Gym",
-        description: "Train to gain muscles",
+        id: "task-3", // ← MUDEI PARA STRING
+        title: "This is a very nice App",
+        description:
+          "Uses React, Vite, React Router DOM, Hooks, UUID, TailWindCSS, Lucide React, JSONPlaceHolder, LocalStorage. Além de funcionalidades avançadas como: CRUD Completo, Persistência de dados, Integração com API's externas, Roteamento dinâmico, Componentização e Gerenciamento de estado",
         isCompleted: false,
       },
     ]
@@ -30,22 +32,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      // ← Troquei "function" por "fetchTasks"
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/todos?_limit=10",
-        {
-          method: "GET",
-        }
-      );
-      const data = await response.json();
-      setTasks(data);
-    };
-    //Intregração com API Fake, para pegar várias terefas.
-    fetchTasks();
-  }, []);
 
   function onTaskClick(taskId) {
     const newTasks = tasks.map((task) => {
